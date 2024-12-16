@@ -1,0 +1,81 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: -15px 0px;
+    
+}
+
+body, html{
+    height: 100%;
+    background-color: aliceblue;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    min-height: 80%;
+}
+
+.articoli{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    min-width: 400px;
+    min-height: 50px;
+    margin:5px;
+}
+.articolo{
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 200px;
+    background-color: rgba(66, 252, 181, 0.1);
+    margin: 10px 2px;
+}
+
+.articolo > p{
+    align-items: center;
+    height: 70%;
+    padding: 10px;
+    border-top: 1px solid black;
+
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    border-radius: 3px;
+    margin: 0px 5px;
+    border-color: rgb(92, 92, 218);
+    border-width: 2px 0px;
+    border-style: solid;
+    width: 15%;
+    min-width: 160px;
+}
+
+li>a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    padding: 8px;
+    margin: 2px 1px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+li:hover, li.active{
+    background-color: rgb(124, 124, 199);
+    border-radius: 6px;
+}

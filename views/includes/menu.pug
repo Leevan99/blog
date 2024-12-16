@@ -1,0 +1,13 @@
+.menu 
+    ul 
+        li(class=(menu === 'home')?'active':'')
+            a(href='/') 🏡 Home 
+        if(admin)
+            li(class=(menu === 'admin')?'active':'')
+                a(href='/admin') 📔 I miei post 
+            li(class=(menu === 'post')?'active':'')
+                a(href='/post') 📧 Pubblica post
+            li
+                a(href='/logout') Logout 
+        li(class=(menu === 'login')?'active':'')
+            a(href='/login') Log In

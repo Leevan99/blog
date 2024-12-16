@@ -4,7 +4,7 @@
   "description": "Blog con accesso e gestione degli articoli tramite CRUD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/Leevan99/blog/issues"
   },
-  "homepage": "https://github.com/Leevan99/blog#readme"
+  "homepage": "https://github.com/Leevan99/blog#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.11.5",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

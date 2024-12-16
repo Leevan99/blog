@@ -1,0 +1,23 @@
+doctype html 
+html(lang="it")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= appTitle + " - " + pageTitle
+        script(src="/js/script.js")
+        link(rel="stylesheet", href="/css/style.css") 
+    body 
+        block page
+        .container 
+            h1.page-title= appTitle 
+            h5.description Welcome in our blog 😍
+        block header 
+            include includes/menu
+        block alert 
+            .alert.hidden 
+        .content 
+            block content 
+        block footer 
+            footer 
+             .container 
+                p Footer del blog 
