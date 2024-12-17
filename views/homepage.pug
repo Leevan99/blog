@@ -4,7 +4,7 @@ block page
     - var pageTitle = 'homepage'
     - var menu = 'home'
 block content 
-    if (!articles)
+    if (articles.length === 0)
         | Non ci sono articoli pubblicati al momento.
         | Pubblica tu per primo effettuando il:&nbsp;
         a(href="/login") login 
@@ -12,9 +12,5 @@ block content
         .articoli 
             each article in articles
                 .articolo
-                    h2= article.titolo
-                    div 
-                        p= article.corpo
-                        .autore
-                            p Autore:&nbsp;
-                            p= article.autore  
+                    h2= article.title 
+                    p= article.corpo
