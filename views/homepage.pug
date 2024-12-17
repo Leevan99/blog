@@ -14,7 +14,10 @@ block content
                 .articolo
                     h2= article.titolo
                     div 
-                        p= article.corpo
+                        p=  article.corpo.slice(0,200)
+                            | ...  
+                            a(href=`/articolo/${article.idArticoli}`) vai all'articolo➡️
                         .autore
                             p Autore:&nbsp;
-                            p= article.autore  
+                            p= article.autore
+                            

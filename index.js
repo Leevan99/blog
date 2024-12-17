@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.get('/', db.articles, routes.homepage)
+app.get('/articolo/:id', db.article, routes.articolo.articolo)
 
 const server = http.createServer(app)
 server.listen(port, () => {

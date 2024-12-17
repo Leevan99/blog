@@ -1,0 +1,13 @@
+extends layout 
+
+block page 
+    - var pageTitle = 'articolo'
+block content 
+    .articoli.articolo
+        h2= article.titolo
+        div 
+            p= article.corpo
+            .autore
+                p Autore:&nbsp;
+                p= article.autore
+            
