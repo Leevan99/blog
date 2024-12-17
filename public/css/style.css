@@ -34,12 +34,18 @@ body, html{
     margin: 10px 2px;
 }
 
-.articolo > p{
+.articolo > div{
     align-items: center;
-    height: 70%;
     padding: 10px;
     border-top: 1px solid black;
 
+}
+
+.autore{
+    display: flex;
+    height: 70%;
+    align-items: end;
+    justify-content: end;
 }
 
 ul{
