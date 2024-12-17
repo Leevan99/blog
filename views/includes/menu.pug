@@ -8,6 +8,9 @@
             li(class=(menu === 'post')?'active':'')
                 a(href='/post') 📧 Pubblica post
             li
-                a(href='/logout') Logout 
-        li(class=(menu === 'login')?'active':'')
-            a(href='/login') Log In
+                a(href='/logout') Logout
+        else
+            li(class=(menu === 'login')?'active':'')
+                a(href='/login') Log In
+            li(class=(menu === 'registrati')?'active':'')
+                a(href='/registrati') Registrati 
