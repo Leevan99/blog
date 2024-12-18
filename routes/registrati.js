@@ -10,7 +10,7 @@ exports.post = (req,res,next)=>{
     }else if(req.username){
         message = "Username già in uso, Riprova."
     }else{
-        res.redirect('/login')
+        return res.redirect('/login')
     }
     res.render('registrati', {message})
 }

@@ -3,6 +3,8 @@ const http = require("http")
 const routes = require("./routes")
 const path = require("path")
 const db = require('./db/db')
+const middleware = require('./middleware/sessionMiddleware')
+const session = require("express-session")
 
 
 
@@ -18,16 +20,31 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        maxAge: 5 * 60 *1000,
+        secure: false,
+        httpOnly: true    
+    }
+}))
 
-
-
-
+app.use('/login', middleware.auth)
+app.use('/registrati', middleware.auth)
 
 app.get('/', db.articles, routes.homepage)
 app.get('/articolo/:id', db.article, routes.articolo.articolo)
 
 app.get('/registrati', routes.registrati.get)
 app.post('/registrati', db.checkAndInsert, routes.registrati.post)
+
+app.get('/login', routes.login.get)
+app.post('/login', db.checkAndLogin, routes.login.get)
+
+
+app.get('/logout', routes.logout)
 
 const server = http.createServer(app)
 server.listen(port, () => {

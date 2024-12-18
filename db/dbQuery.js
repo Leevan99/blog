@@ -16,3 +16,8 @@ WHERE username = ? OR email = ?`
 exports.queryRegistrazione = `
 INSERT INTO users (nome, cognome, username, email, password)
 VALUE(?, ?, ?, ?, ?)`
+
+exports.queryLogin = `
+SELECT *
+FROM users
+WHERE username = ? OR email = ?`

@@ -53,3 +53,19 @@ exports.checkAndInsert = (req,res,next)=>{
         }
     })
 }
+
+
+exports.checkAndLogin = (req,res,next)=>{
+    const {username, password} = req.body
+    db.execute(query.queryLogin, [username, username], (err, result)=>{
+        if(err){
+            next(err)
+        }else if(result[0] && result[0].password === password){
+            req.session.auth = true
+            return res.redirect('/')
+        }else{
+            req.session.auth = false
+        }
+        next()
+    })
+}
