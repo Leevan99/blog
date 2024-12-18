@@ -62,10 +62,26 @@ exports.checkAndLogin = (req,res,next)=>{
             next(err)
         }else if(result[0] && result[0].password === password){
             req.session.auth = true
+            req.session.idUtente = result[0].idUtente
+            req.session.username = result[0].username
+            req.session.nome = result[0].nome
+            req.session.cognome = result[0].cognome
+            req.session.email = result[0].email
             return res.redirect('/')
-        }else{
-            req.session.auth = false
         }
         next()
     })
+}
+
+
+exports.posta = (req,res,next)=>{
+    const {titolo, corpo} = req.body
+    const autore = req.session.nome + " " + req.session.cognome
+    db.execute(query.queryPost, [titolo, corpo, autore, req.session.idUtente], (err,result)=>{
+        if(err) {
+            next(err)
+        }
+    })
+    req.session.message = 'Post pubblicato correttamente!'
+    res.redirect('/')
 }

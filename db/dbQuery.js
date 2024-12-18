@@ -21,3 +21,8 @@ exports.queryLogin = `
 SELECT *
 FROM users
 WHERE username = ? OR email = ?`
+
+
+exports.queryPost = `
+INSERT INTO articoli (titolo, corpo, autore, idAutore)
+VALUES(?, ?, ?, ?)`

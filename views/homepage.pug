@@ -3,6 +3,11 @@ extends layout
 block page 
     - var pageTitle = 'Homepage'
     - var menu = 'home'
+
+block alert 
+    if(message)
+        p= message
+
 block content 
     if (!articles[0])
         | Non ci sono articoli pubblicati al momento.

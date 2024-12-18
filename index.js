@@ -31,20 +31,27 @@ app.use(session({
     }
 }))
 
+app.use(middleware.initAuth);
+
+
 app.use('/login', middleware.auth)
 app.use('/registrati', middleware.auth)
+app.use('/admin', middleware.admin)
 
 app.get('/', db.articles, routes.homepage)
-app.get('/articolo/:id', db.article, routes.articolo.articolo)
+app.get('/articolo/:id', db.article, routes.articolo)
 
 app.get('/registrati', routes.registrati.get)
 app.post('/registrati', db.checkAndInsert, routes.registrati.post)
 
-app.get('/login', routes.login.get)
-app.post('/login', db.checkAndLogin, routes.login.get)
+app.get('/login', routes.login)
+app.post('/login', db.checkAndLogin, routes.login)
 
+app.get('/admin/post', routes.posta)
+app.post('/admin/post', db.posta)
 
 app.get('/logout', routes.logout)
+
 
 const server = http.createServer(app)
 server.listen(port, () => {
