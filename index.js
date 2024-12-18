@@ -26,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', db.articles, routes.homepage)
 app.get('/articolo/:id', db.article, routes.articolo.articolo)
 
+app.get('/registrati', routes.registrati.get)
+app.post('/registrati', db.checkAndInsert, routes.registrati.post)
+
 const server = http.createServer(app)
 server.listen(port, () => {
     console.info(`Server in ascolto sulla porta: ${port}`)

@@ -1,0 +1,23 @@
+extends layout 
+
+block page 
+    - var menu = 'registrati'
+    - var pageTitle = 'Registrati'
+
+block alert 
+    if(message)
+        p= message
+
+block content 
+    form(action="/registrati", method="post")
+        label(for="nome") Nome:
+        input(type="text" name="nome" placeholder="Nome" required)
+        label(for="cognome") Cognome:
+        input(type="text" name="cognome" placeholder="Cognome" required)
+        label(for="username") Username:
+        input(type="text" name="username" placeholder="Username" required)
+        label(for="email") Email:
+        input(type="email" name="email" placeholder="Email" required)
+        label(for="password") Password:
+        input(type="password" name="password" placeholder="Password" required)
+        input(type="submit", value="Registrati")

@@ -1,4 +1,5 @@
 const mysql = require('mysql2')
+const query = require('./dbQuery')
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -8,19 +9,9 @@ const db = mysql.createConnection({
     database: 'blog'
 })
 
-const queryArticoli = `
-SELECT * 
-FROM articoli
-ORDER BY idArticoli DESC`
-
-const queryArticolo = `
-SELECT * 
-FROM articoli
-WHERE idArticoli = ?`
-
 
 exports.articles = (req,res,next)=>{
-    db.execute(queryArticoli, (err, results)=>{
+    db.execute(query.queryArticoli, (err, results)=>{
     if(err) {
         console.log(err)
         next(err)
@@ -31,7 +22,7 @@ exports.articles = (req,res,next)=>{
 
 exports.article = (req,res,next)=>{
     const {id} = req.params
-    db.execute(queryArticolo, [id], (err, result)=>{
+    db.execute(query.queryArticolo, [id], (err, result)=>{
     if(err) {
         console.log(err)
         next(err)
@@ -39,3 +30,26 @@ exports.article = (req,res,next)=>{
     req.article = result
     next()
 })}
+
+
+exports.checkAndInsert = (req,res,next)=>{
+    const {nome, cognome, username, email, password} = req.body
+    db.execute(query.queryControllo, [username, email], (err, result)=>{
+        if(err){
+            next(err)
+        } else if (result[0]){
+            if(result[0].email === email){
+                req.email = true
+                next()
+            } else {
+                req.username = true
+                next()
+            }
+        }else {
+            db.execute(query.queryRegistrazione, [nome, cognome, username, email, password], (err, result)=>{
+                if (err) next(err)
+                next()
+            })
+        }
+    })
+}

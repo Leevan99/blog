@@ -1,0 +1,14 @@
+extends layout 
+
+block page 
+    - var menu = 'registrati'
+    - var pageTitle = 'Registrati'
+
+block content 
+    form(action="/login", method="post")
+        label(for="nome") Nome:
+        label(for="username") Username or Email :
+        input(type="text" name="username" placeholder="Username or email" required)
+        label(for="password") Password:
+        input(type="password" name="password" placeholder="Password" required)
+        input(type="submit", value="Login")
