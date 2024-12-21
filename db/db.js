@@ -68,6 +68,8 @@ exports.checkAndLogin = (req,res,next)=>{
             req.session.cognome = result[0].cognome
             req.session.email = result[0].email
             return res.redirect('/')
+        }else{
+            req.message='Username o password errati!'
         }
         next()
     })

@@ -4,6 +4,10 @@ block page
     - var menu = 'login'
     - var pageTitle = 'Login'
 
+block alert 
+    if(message)
+        p= message
+
 block content 
     form(action="/login", method="post")
         label(for="username") Username or Email:

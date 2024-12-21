@@ -6,7 +6,7 @@ exports.homepage = (req, res, next)=>{
     const admin = req.session.auth
     const message = req.session.message
     delete req.session.message
-    res.render('homepage', {articles, admin, message})
+    res.render('homepage', {articles, admin, message, idUtente: req.session.idUtente})
 }
 
 
@@ -18,7 +18,7 @@ exports.articolo = (req, res, next) => {
 
 
 exports.login = (req,res,next)=>{
-    res.render('login')
+    res.render('login', {message: req.message})
 }
 
 exports.logout = (req,res)=>{
