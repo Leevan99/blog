@@ -18,6 +18,10 @@ exports.articolo = (req, res, next) => {
 
 
 exports.login = (req,res,next)=>{
+    if(req.session.message){
+        req.message = req.session.message
+        delete req.session.message
+    }
     res.render('login', {message: req.message})
 }
 

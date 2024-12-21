@@ -1,13 +1,14 @@
 const mysql = require('mysql2')
 const query = require('./dbQuery')
 const bcrypt = require('bcrypt')
+require('dotenv').config()
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'luca',
-    password: 'Luca.99',
-    database: 'blog'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 })
 
 
@@ -51,6 +52,7 @@ exports.checkAndInsert = (req,res,next)=>{
                 if(err) next(err)
                 db.execute(query.queryRegistrazione, [nome, cognome, username, email, hashPassword], (err, result)=>{
                     if (err) next(err)
+                    req.session.message = 'Registrazione avvenuta con successo!<br>Effettua il login.'
                     next()
                 })
             })

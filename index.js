@@ -5,11 +5,13 @@ const path = require("path")
 const db = require('./db/db')
 const middleware = require('./middleware/sessionMiddleware')
 const session = require("express-session")
+require('dotenv').config()
 
 
 
 const app = express()
 const port = process.env.port || 3000
+
 
 app.locals.appTitle = "Our blog"
 
@@ -21,7 +23,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { 
