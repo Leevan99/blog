@@ -1,5 +1,6 @@
 const mysql = require('mysql2')
 const query = require('./dbQuery')
+const bcrypt = require('bcrypt')
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -46,9 +47,12 @@ exports.checkAndInsert = (req,res,next)=>{
                 next()
             }
         }else {
-            db.execute(query.queryRegistrazione, [nome, cognome, username, email, password], (err, result)=>{
-                if (err) next(err)
-                next()
+            bcrypt.hash(password, 10, (err, hashPassword)=>{
+                if(err) next(err)
+                db.execute(query.queryRegistrazione, [nome, cognome, username, email, hashPassword], (err, result)=>{
+                    if (err) next(err)
+                    next()
+                })
             })
         }
     })
@@ -60,7 +64,7 @@ exports.checkAndLogin = (req,res,next)=>{
     db.execute(query.queryLogin, [username, username], (err, result)=>{
         if(err){
             next(err)
-        }else if(result[0] && result[0].password === password){
+        }else if(result[0] && bcrypt.compareSync(password, result[0].password, (err, result)=>{return result})){
             req.session.auth = true
             req.session.idUtente = result[0].idUtente
             req.session.username = result[0].username
