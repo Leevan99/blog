@@ -39,6 +39,7 @@ app.use(middleware.initAuth);
 app.use('/login', middleware.auth)
 app.use('/registrati', middleware.auth)
 app.use('/admin', middleware.admin)
+app.use('/api', middleware.admin)
 
 app.get('/', db.articles, routes.homepage)
 app.get('/articolo/:id', db.article, routes.articolo)
@@ -51,6 +52,16 @@ app.post('/login', db.checkAndLogin, routes.login)
 
 app.get('/admin/post', routes.posta)
 app.post('/admin/post', db.posta)
+
+app.get('/admin/dashboard', db.articlesUtente, routes.dashboard)
+app.delete('/api/elimina/:id', db.deleteArticle)
+app.post('/admin/dashboard', db.putArticolo)
+app.put('/api/publish/:id', db.publish)
+
+
+app.get('/admin/articolo/:id', db.article, routes.putArticolo)
+
+
 
 app.get('/logout', routes.logout)
 

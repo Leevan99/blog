@@ -10,21 +10,33 @@ block alert
 
 block content 
     if (!articles[0])
+        p 
         | Non ci sono articoli pubblicati al momento.
-        | Pubblica tu per primo effettuando il:&nbsp;
-        a(href="/login") login 
+        | Pubblica tu per primo:&nbsp;
+        a(href="/admin/post") Pubblica 
     else 
         .articoli 
+            - var unpublish = 0
             each article in articles
-                .articolo
-                    h2= article.titolo
-                    div 
-                        p=  article.corpo.slice(0,250)
-                            | ...  
-                            a(href=`/articolo/${article.idArticoli}`) vai all'articolo➡️
-                        .autore
-                            p Autore:&nbsp;
-                            p= article.autore
-                        if(article.idAutore === idUtente)
-                            a(href=`/put/articolo/${article.idArticoli}`) Modifica articolo 
+                if (article.publish)
+                    .articolo
+                        h2= article.titolo
+                        div 
+                            p=  article.corpo.slice(0,250)
+                                | ...  
+                                a(href=`/articolo/${article.idArticoli}`) vai all'articolo➡️
+                            .autore
+                                p Autore:&nbsp;
+                                p= article.autore
+                            if(article.idAutore === idUtente)
+                                a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
+                else 
+                    - unpublish++
+                    if (articles.length == unpublish)
+                        p
+                        | Non ci sono articoli pubblicati al momento.
+                        | Pubblica tu per primo:&nbsp;
+                        a(href="/admin/post") Pubblica 
+
+
                             

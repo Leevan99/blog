@@ -93,3 +93,63 @@ exports.posta = (req,res,next)=>{
     req.session.message = 'Post pubblicato correttamente!'
     res.redirect('/')
 }
+
+exports.articlesUtente = (req,res,next)=>{
+    db.execute(query.queryArticoliUtente, [req.session.idUtente], (err, results)=>{
+    if(err) {
+        console.log(err)
+        next(err)
+    }
+    req.articlesUtente = results
+    next()
+})}
+
+
+exports.deleteArticle = (req,res,next)=>{
+    const {id} = req.params
+    db.execute(query.queryDelete, [id], (err, result)=>{
+    if(err) {
+        console.log(err)
+        next(err)
+    }
+    req.session.message = 'Articolo eliminato!'
+    res.json({ success: true})
+    })
+}
+
+exports.putArticolo = (req,res,next)=>{
+    const {idArticoli, titolo, corpo} = req.body
+    db.execute(query.queryAggiorna, [titolo, corpo, idArticoli], (err, result)=>{
+        if(err) {
+            console.log(err)
+            next(err)
+        }
+    })
+    req.session.message = 'Articolo aggiornato!'
+    res.redirect('/admin/dashboard')
+}
+
+exports.publish = (req,res,next)=>{
+    const {id} = req.params
+    let publish = true
+    db.execute(query.queryArticolo, [id], (err, result)=>{
+        if(err) {
+            console.log(err)
+            next(err)
+        }
+        if(result[0].publish)
+            publish = false          
+        db.execute(query.queryPublish, [publish, id], (err)=>{
+            if(err) {
+                console.log(err)
+                next(err)
+            }
+            finalizeUpdate(req, res, publish)
+        })
+    })
+}
+
+const finalizeUpdate = (req, res, publish) => {
+    req.session.message = 'Articolo ' + (publish ? "pubblicato" : "nascosto")
+    res.redirect('/admin/dashboard')
+};

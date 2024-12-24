@@ -10,4 +10,6 @@ block content
             .autore
                 p Autore:&nbsp;
                 p= article.autore
+            if(article.idAutore === idUtente)
+                        a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo 
             
