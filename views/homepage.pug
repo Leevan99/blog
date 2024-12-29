@@ -22,6 +22,7 @@ block content
                     .articolo
                         h2= article.titolo
                         div 
+                            img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
                             p=  article.corpo.slice(0,250)
                                 | ...  
                                 a(href=`/articolo/${article.idArticoli}`) vai all'articolo➡️

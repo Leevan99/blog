@@ -5,9 +5,10 @@ block page
     - var pageTitle = "Pubblica"
 
 block content 
-    form(action="/admin/post", method="post")
+    form(action="/admin/post" method="post" enctype="multipart/form-data")
         label(for="titolo") Titolo: 
         input(type="text" name="titolo" placeholder="Titolo" required)
         label(for="corpo") Testo articolo:
         textarea(name="corpo" rows="10" cols="40" placeholder="Scrivi qui..." style="resize: none" required)
+        input(type="file" name="immagine" accept="image/*")
         input(type="submit", value="Pubblica")

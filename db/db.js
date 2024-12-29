@@ -85,7 +85,7 @@ exports.checkAndLogin = (req,res,next)=>{
 exports.posta = (req,res,next)=>{
     const {titolo, corpo} = req.body
     const autore = req.session.nome + " " + req.session.cognome
-    db.execute(query.queryPost, [titolo, corpo, autore, req.session.idUtente], (err,result)=>{
+    db.execute(query.queryPost, [titolo, corpo, autore, req.session.idUtente, req.body.immagine], (err,result)=>{
         if(err) {
             next(err)
         }
@@ -153,3 +153,4 @@ const finalizeUpdate = (req, res, publish) => {
     req.session.message = 'Articolo ' + (publish ? "pubblicato" : "nascosto")
     res.redirect('/admin/dashboard')
 };
+

@@ -6,6 +6,18 @@ const db = require('./db/db')
 const middleware = require('./middleware/sessionMiddleware')
 const session = require("express-session")
 require('dotenv').config()
+const multer = require('multer')
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: path.join(__dirname, 'public/img'), // Percorso fisso
+        filename: (req, file, cb) => {
+            const uniqueName = Date.now() + '-' + file.originalname;
+            cb(null, uniqueName); // Salva il file con un nome unico
+            req.body.immagine = uniqueName;
+        }
+    })
+})
 
 
 
@@ -51,7 +63,7 @@ app.get('/login', routes.login)
 app.post('/login', db.checkAndLogin, routes.login)
 
 app.get('/admin/post', routes.posta)
-app.post('/admin/post', db.posta)
+app.post('/admin/post', upload.single('immagine'), db.posta)
 
 app.get('/admin/dashboard', db.articlesUtente, routes.dashboard)
 app.delete('/api/elimina/:id', db.deleteArticle)

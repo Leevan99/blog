@@ -24,8 +24,8 @@ WHERE username = ? OR email = ?`
 
 
 exports.queryPost = `
-INSERT INTO articoli (titolo, corpo, autore, idAutore, publish)
-VALUES(?, ?, ?, ?, true)`
+INSERT INTO articoli (titolo, corpo, autore, idAutore, publish, srcImg)
+VALUES(?, ?, ?, ?, true, ?)`
 
 exports.queryArticoliUtente = `
 SELECT * 
