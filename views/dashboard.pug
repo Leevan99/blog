@@ -10,23 +10,22 @@ block alert
 
 block content
     .container 
-        h1 Dashboard
-        p Benvenuto!
+        h2.dashboard Benvenuto #{articles[0].autore}!
         if (articles && !articles[0])
             | Non hai pubblicato articoli al momento.
             | Pubblicane uno:&nbsp;
             a(href="/admin/post") pubblica post 
         else if (articles && articles[0])
-            .articoli 
                 each article in articles
-                    button(type="button" class="elimina" data-id=`${article.idArticoli}`) Elimina
-                    button(type="button" class="publish" data-id=`${article.idArticoli}`)
-                        if (article.publish)
-                            | Nascondi
-                        else
-                            | Mostra
-                    a(href=`/admin/articolo/${article.idArticoli}`)
-                        button(type="button") Modifica
-                    h2 
-                        a(href=`/articolo/${article.idArticoli}`)= article.titolo
+                    .articoli
+                        button(type="button" class="elimina" data-id=`${article.idArticoli}`) Elimina
+                        button(type="button" class=(article.publish ? 'nascondi' : 'mostra') data-id=`${article.idArticoli}`).publish
+                            if (article.publish)
+                                | Nascondi
+                            else
+                                | Mostra
+                        a(href=`/admin/articolo/${article.idArticoli}`)
+                            button(type="button").modifica Modifica
+                        h2.titolo-dash
+                            a(href=`/articolo/${article.idArticoli}`)= article.titolo
                             

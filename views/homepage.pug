@@ -15,17 +15,17 @@ block content
         | Pubblica tu per primo:&nbsp;
         a(href="/admin/post") Pubblica 
     else 
-        .articoli 
+        .articoli-home 
             - var unpublish = 0
             each article in articles
                 if (article.publish)
-                    .articolo
+                    .articolo-home 
                         h2= article.titolo
                         div 
                             img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
                             p=  article.corpo.slice(0,250)
                                 | ...  
-                                a(href=`/articolo/${article.idArticoli}`) vai all'articolo➡️
+                            a(href=`/articolo/${article.idArticoli}`) vai all'articolo
                             .autore
                                 p Autore:&nbsp;
                                 p= article.autore

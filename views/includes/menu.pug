@@ -1,16 +1,19 @@
 .menu 
-    ul 
+    h3.page-title= appTitle
+    ul
         li(class=(menu === 'home')?'active':'')
-            a(href='/') 🏡 Home 
+            a(href='/').menu-item HOME
         if(admin)
             li(class=(menu === 'dashboard')?'active':'')
-                a(href='/admin/dashboard') 📔 I miei post 
+                a(href='/admin/dashboard').menu-item DASHBOARD
             li(class=(menu === 'post')?'active':'')
-                a(href='/admin/post') 📧 Pubblica post
-            li
-                a(href='/logout') Logout
-        else
+                a(href='/admin/post').menu-item PUBBLICA
+    ul 
+        if(!admin)
             li(class=(menu === 'login')?'active':'')
-                a(href='/login') Log In
+                a(href='/login').login LOGIN
             li(class=(menu === 'registrati')?'active':'')
-                a(href='/registrati') Registrati 
+                a(href='/registrati').registrati REGISTRATI
+        else
+            li
+                a(href='/logout').logout LOGOUT

@@ -3,13 +3,15 @@ extends layout
 block page 
     - var pageTitle = 'Articolo'
 block content 
-    .articoli.articolo
+    .articolo 
         h2= article.titolo
+            if(article.idAutore === idUtente)
+                            a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo 
         div 
+            img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
             p= article.corpo
             .autore
                 p Autore:&nbsp;
-                p= article.autore
-            if(article.idAutore === idUtente)
-                        a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo 
+                    span= article.autore
+            
             

@@ -9,13 +9,19 @@ html(lang="it")
         link(rel="stylesheet", href="/css/style.css")
         //- script(src="https://cdn.tailwindcss.com") 
     body 
-        .container 
-            h1.page-title= appTitle 
-            h5.description Welcome in our blog 😍
         block header 
             include includes/menu
-        block alert 
-            .alert.hidden 
+        if(message)
+            if(admin)
+                if (message === "Post pubblicato correttamente!" || message === "Post modificato correttamente!")
+                    .alert.green
+                        block alert
+                else 
+                    .alert
+                        block alert
+            else
+                .alert.not-admin
+                    block alert
         .content 
             block content 
         block footer 
