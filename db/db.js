@@ -112,7 +112,7 @@ exports.deleteArticle = (req,res,next)=>{
         console.log(err)
         next(err)
     }
-    req.session.message = 'Articolo eliminato!'
+    req.session.message = 'Post eliminato!'
     res.json({ success: true})
     })
 }
@@ -125,7 +125,7 @@ exports.putArticolo = (req,res,next)=>{
             next(err)
         }
     })
-    req.session.message = 'Articolo aggiornato!'
+    req.session.message = 'Post modificato correttamente!'
     res.redirect('/admin/dashboard')
 }
 
@@ -150,7 +150,10 @@ exports.publish = (req,res,next)=>{
 }
 
 const finalizeUpdate = (req, res, publish) => {
-    req.session.message = 'Articolo ' + (publish ? "pubblicato" : "nascosto")
+    if (publish){
+        req.session.message
+    }
+    req.session.message = "Post " + (publish ? "pubblicato" : "nascosto") + " correttamente!"
     res.redirect('/admin/dashboard')
 };
 
