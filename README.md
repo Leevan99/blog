@@ -34,9 +34,11 @@ Assicurati di avere i seguenti strumenti installati:
    ```env
    PORT=3000
    DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=password
-   DB_NAME=nome_database
+   DB_USER=user
+   DB_PASS=password
+   DB_NAME=blog
+   DB_PORT=3306
+   SESSION_SECRET=secret
    ```
 
 4. **Esegui l'inizializzazione del database**
@@ -57,25 +59,21 @@ Assicurati di avere i seguenti strumenti installati:
 
 - `npm start`: Avvia l'applicazione in modalità produzione.
 - `npm run dev`: Avvia l'applicazione in modalità sviluppo con hot-reloading.
-- `npm run test`: Esegue i test definiti.
-- `npm run migrate`: Applica le migrazioni del database.
-- `npm run lint`: Controlla il codice con ESLint.
 
 ## Struttura del Progetto
 
 ```plaintext
-nome-repository/
-├── src/
-│   ├── routes/         # Definizione delle route
-│   ├── controllers/    # Logica di gestione
-│   ├── models/         # Modelli del database
-│   ├── middlewares/    # Middleware
-│   └── app.js          # Configurazione principale dell'app
-├── public/             # File statici
-├── .env.example        # Esempio di file di configurazione
-├── package.json        # Gestione delle dipendenze
-├── README.md           # Documentazione del progetto
-└── ...                 # Altri file
+blog/
+├── routes/         # Definizione delle route
+├── views/          # Template pug
+    ├── includes    # Componenti Riutilizzabili
+├── middlewares/    # Middleware
+    ├── db/         # Middleware del Database
+├── index.js        # Configurazione principale dell'app
+├── public/         # File statici
+├── .env.example    # Esempio di file di configurazione
+├── package.json    # Gestione delle dipendenze
+└── README.md       # Documentazione del progetto
 ```
 
 ## Contributi
