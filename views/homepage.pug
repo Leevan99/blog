@@ -19,18 +19,23 @@ block content
             - var unpublish = 0
             each article in articles
                 if (article.publish)
-                    .articolo-home 
-                        h2= article.titolo
+                    .articolo-home
+                        
+                        h2= article.titolo.slice(0,25)
                         div 
                             img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
-                            p=  article.corpo.slice(0,250)
-                                | ...  
-                            a(href=`/articolo/${article.idArticoli}`) vai all'articolo
+                            - var slicing = 270
+                            while (article.corpo[slicing] != ' ' && slicing < article.corpo.length)
+                                - slicing--
+                            p=  article.corpo.slice(0,slicing)
+                                if(article.corpo.length > slicing)
+                                    | ...
+                            a.view-article(href=`/articolo/${article.idArticoli}`) vai all'articolo
                             .autore
                                 p Autore:&nbsp;
                                 p= article.autore
                             if(article.idAutore === idUtente)
-                                a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
+                                a.mod-article(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
                 else 
                     - unpublish++
                     if (articles.length == unpublish)
