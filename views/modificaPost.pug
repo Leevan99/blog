@@ -7,8 +7,4 @@ block page
 block content 
     form(action="/admin/dashboard", method="post")
         input(type="text" name="idArticoli" value=`${article.idArticoli}` hidden)
-        label(for="titolo") Titolo: 
-        input(type="text" name="titolo" placeholder="Titolo" value=`${article.titolo}` required)
-        label(for="corpo") Testo articolo:
-        textarea(name="corpo" rows="10" cols="40" placeholder="Scrivi qui..." style="resize: none" required) #{article.corpo}
-        input(type="submit", value="Pubblica")
+        include includes/postModule
