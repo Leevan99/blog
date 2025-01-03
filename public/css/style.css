@@ -31,7 +31,7 @@ body {
   align-items: center;
 }
 
-.menu > div > div {
+.menu > div > div{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -52,7 +52,7 @@ body {
   margin: 0 20px;
   align-items: center;
 }
-
+ 
 ul {
   padding-left: 0;
   display: flex;
@@ -337,7 +337,60 @@ footer {
   bottom: 0;
 }
 
+/* LOGIN */
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 0px 50px 50px 50px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+form > input, textarea {
+  border: 0;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px 5px;
+  background-color: rgba(226, 226, 226, 0.1);
+  color: white;
+  width: 100%;
+}
+
+form > input:focus::placeholder {
+  color: rgba(0, 0, 0, 0);
+}
+
+form > input:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+form > img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -30px;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -412,6 +465,10 @@ footer {
 
   .oneline{
     min-height: fit-content;
+}
+
+.center-container {
+  margin-left: 0px;
 }
     
 }

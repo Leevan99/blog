@@ -9,5 +9,8 @@ block alert
         p= message
 
 block content 
-    form(action="/admin/post" method="post" enctype="multipart/form-data")
-        include includes/postModule
+    .center-container
+        .form-container
+            h2 Pubblica
+            form(action="/admin/post" method="post" enctype="multipart/form-data")
+                include includes/postModule

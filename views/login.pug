@@ -8,9 +8,12 @@ block alert
         p!= message
 
 block content 
-    form(action="/login", method="post")
-        label(for="username") Username or Email:
-        input(type="text" name="username" placeholder="Username or email" required)
-        label(for="password") Password:
-        input(type="password" name="password" placeholder="Password" required)
-        input(type="submit", value="Login")
+    .center-container
+        .form-container
+            h2 Login
+            form(action="/login", method="post")
+                //- label(for="username") Username or Email:
+                input(type="text" name="username" placeholder="Username or email" required)
+                //- label(for="password") Password:
+                input(type="password" name="password" placeholder="Password" required)
+                input(type="submit", value="Login")
