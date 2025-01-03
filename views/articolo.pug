@@ -5,8 +5,8 @@ block page
 block content 
     .articolo 
         h2= article.titolo
-            if(article.idAutore === idUtente)
-                            a(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo 
+        if(article.idAutore === idUtente)
+            a.mod-article(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo 
         div 
             img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
             p= article.corpo

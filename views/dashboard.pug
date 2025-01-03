@@ -18,6 +18,7 @@ block content
         else if (articles && articles[0])
                 each article in articles
                     .articoli
+                        img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
                         button(type="button" class="elimina" data-id=`${article.idArticoli}`) Elimina
                         button(type="button" class=(article.publish ? 'nascondi' : 'mostra') data-id=`${article.idArticoli}`).publish
                             if (article.publish)

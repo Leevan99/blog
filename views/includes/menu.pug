@@ -1,8 +1,9 @@
 .menu
     div 
-        img(src="/img/tailwind.png", alt="logo")
-        span &nbsp;
-        h3.page-title= appTitle
+        div
+            img(src="/img/tailwind.png", alt="logo")
+            span &nbsp;
+            h3.page-title= appTitle
     ul(class=(admin)?'':'not-admin')
         li(class=(menu === 'home')?'active':'')
             a(href='/').menu-item HOME
