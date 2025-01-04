@@ -372,7 +372,7 @@ form > input:focus::placeholder {
   color: rgba(0, 0, 0, 0);
 }
 
-form > input:hover {
+form > input[type="submit"]:hover {
   cursor: pointer;
   opacity: 0.8;
 }
