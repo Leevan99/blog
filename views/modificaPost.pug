@@ -2,12 +2,12 @@ extends layout
 
 block page 
     - var menu = "post"
-    - var pageTitle = "Pubblica"
+    - var pageTitle = "Modifica post"
 
 block content
     .center-container
         .form-container
-            h2 Modifica
+            h2= pageTitle
             form(action="/admin/dashboard", method="post")
                 input(type="text" name="idArticoli" value=`${article.idArticoli}` hidden)
                 include includes/postModule

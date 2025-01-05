@@ -29,6 +29,9 @@ block content
                         div 
                             img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
                             - var slicing = 270
+                            if (article.titolo.length <= 30)
+                                - slicing = 300
+
                             while (article.corpo[slicing] != ' ' && slicing < article.corpo.length)
                                 - slicing--
                             p(class=((article.titolo.length) <= 30 ? "oneline" : ""))=  article.corpo.slice(0,slicing)

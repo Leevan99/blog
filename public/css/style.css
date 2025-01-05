@@ -127,7 +127,7 @@ li {
 }
 .alert > p {
   width: fit-content;
-  background-color: #ee222b;
+  background-color: rgba(235, 14, 25, 0.6);
   color: white;
   padding: 10px;
   border-radius: 10px;
@@ -138,7 +138,7 @@ li {
 }
 
 .green > p {
-  background-color: #008100;
+  background-color: rgba(0, 196, 0, 0.5);
 }
 
 .content {
@@ -261,8 +261,8 @@ button.nascondi {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.articolo-home > div > p {
-  height: 147px;
+.articolo-home {
+  min-height: 147px;
 }
 
 .oneline{
@@ -337,7 +337,7 @@ footer {
   bottom: 0;
 }
 
-/* LOGIN */
+/* FORM */
 
 .form-container {
   display: flex;
@@ -356,6 +356,10 @@ form {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+form > input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 form > input, textarea {
@@ -385,11 +389,67 @@ form > img {
   margin: 10px;
 }
 
+input[type="file"]{
+  display: none;
+}
+
+
+.custom-file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(2, 100, 204, 0.3);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.custom-file-label:hover {
+  background-color: rgba(1, 66, 136, 0.5);
+}
+
 .center-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: -30px;
+}
+
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logout-container > p{
+  font-weight: 600;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+.logout-container > p > a {
+  color: rgba(0, 157, 168, 0.8);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.logout-container > p > a:hover{
+  color: rgba(1, 124, 133, 0.8);
+  text-decoration: underline;
+}
+
+input[type="submit"] {
+  font-weight: 800;
+  max-width: 90%;
+}
+
+label {
+  color: white;
+  font-weight: 500;
 }
 
 

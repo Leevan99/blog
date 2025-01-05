@@ -2,7 +2,7 @@ extends layout
 
 block page 
     - var menu = "post"
-    - var pageTitle = "Pubblica"
+    - var pageTitle = "Pubblica post"
 
 block alert 
     if(message)
@@ -11,6 +11,6 @@ block alert
 block content 
     .center-container
         .form-container
-            h2 Pubblica
+            h2= pageTitle
             form(action="/admin/post" method="post" enctype="multipart/form-data")
                 include includes/postModule

@@ -6,7 +6,8 @@ if (article)
 label(for="corpo") Testo articolo:
 textarea(name="corpo" rows="10" cols="40" placeholder="Scrivi qui..." style="resize: none" required)= article ? article.corpo : ''
 if (!article) 
-    input(type="file" name="immagine" accept="image/jpeg, image/png" required)
+    label.custom-file-label(for="immagine" id="img") Scegli immagine
+    input#file(type="file" name="immagine" accept="image/jpeg, image/png" required) 
 
 input(type="submit" value="Pubblica")
 

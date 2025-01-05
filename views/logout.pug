@@ -1,5 +1,13 @@
 extends layout 
 
-block page 
-    - var menu = 'logout'
+block page
     - var pageTitle = 'Logout'
+
+block content
+    .logout-container
+        h2 Hai effettuato il logout con successo.
+        p Effettua nuovamente il 
+            a(href="/login") login
+            | &nbsp;o torna alla 
+            a(href="/") home
+            | .
