@@ -251,8 +251,9 @@ button.nascondi {
   flex-direction: column;
   max-height: 650px;
   min-height: auto;
-  max-width: 300px;
+  max-width: 500px;
   min-width: 300px;
+  width: 500px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
@@ -261,28 +262,48 @@ button.nascondi {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.articolo-home {
-  min-height: 147px;
+.articolo-home > div > p{
+ height: 100px;
 }
 
 .oneline{
-    min-height: 177px;
+    min-height: 58px;
 }
 
 .articolo-home > div > img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
+  width: 80%;
+  max-height: 250px;
+  min-height: 250px;
+  object-fit: contain;
   border-radius: 5px;
 }
+
 
 .articolo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
+.articolo > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.articolo > div > img {
+  max-height: 50vh;
+  object-fit: contain;
+}
+
+.articolo > div > p{
+  text-align: justify;
+  width: 95%;
+}
 .view-article {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
@@ -384,7 +405,7 @@ form > input[type="submit"]:hover {
 form > img {
   width: 250px;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 20px;
   margin: 10px;
 }
@@ -519,10 +540,17 @@ label {
     margin-left: 3px;
   }
 
+  .articolo-home{
+    width: 90%;
+  }
+
   .articolo-home > div > p {
     height: fit-content;
   }
 
+  .articolo-home > div > p{
+    height: auto;
+   }
   .oneline{
     min-height: fit-content;
 }

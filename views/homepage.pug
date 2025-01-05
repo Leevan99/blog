@@ -20,10 +20,10 @@ block content
             each article in articles
                 if (article.publish)
                     .articolo-home
-                        - var slicing = 47
+                        - var slicing = 60
                         while (article.titolo[slicing] != ' ' && slicing < article.titolo.length)
                             - slicing--
-                        h2= article.titolo.slice(0,slicing)
+                        h2(class=((article.titolo.length) <= 38 ? "oneline" : ""))= article.titolo.slice(0,slicing)
                             if(article.titolo.length > slicing)
                                 | ...
                         div 
@@ -34,7 +34,7 @@ block content
 
                             while (article.corpo[slicing] != ' ' && slicing < article.corpo.length)
                                 - slicing--
-                            p(class=((article.titolo.length) <= 30 ? "oneline" : ""))=  article.corpo.slice(0,slicing)
+                            p=  article.corpo.slice(0,slicing)
                                 if(article.corpo.length > slicing)
                                     | ...
                             a.view-article(href=`/articolo/${article.idArticoli}`) vai all'articolo
