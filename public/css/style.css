@@ -247,17 +247,17 @@ button.nascondi {
 
 /* HOME */
 
-.home-container{
+.container{
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.home-container > .row{
+.container > .row{
   flex-direction: row;
 }
 
-.home-container .row > a{
+.container a{
   font-weight: 600;
 }
 
@@ -466,14 +466,13 @@ input[type="file"]{
   text-wrap: wrap;
 }
 
-.logout-container > p > a {
-  color: rgba(0, 157, 168, 0.8);
-  font-size: 20px;
+p a {
+  font-size: 18px;
   text-decoration: none;
 }
 
-.logout-container > p > a:hover{
-  color: rgba(1, 124, 133, 0.8);
+p a:hover{
+  color: rgba(255, 255, 255, 0.541);
   text-decoration: underline;
 }
 
