@@ -8,13 +8,13 @@ block alert
     if(message)
         p= message
 
-block content
-    .container 
-        h2.dashboard Benvenuto #{articles[0].autore}!
+block content 
+        h2.dashboard Benvenuto #{nome}!
         if (articles && !articles[0])
-            | Non hai pubblicato articoli al momento.
-            | Pubblicane uno:&nbsp;
-            a(href="/admin/post") pubblica post 
+            .container
+                p Non hai pubblicato articoli al momento.
+                    | Pubblicane uno:&nbsp;
+                    a(href="/admin/post") Pubblica post 
         else if (articles && articles[0])
                 each article in articles
                     .articoli

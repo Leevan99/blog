@@ -6,7 +6,7 @@ exports.homepage = (req, res, next) => {
     const admin = req.session.auth
     const message = req.session.message
     delete req.session.message
-    res.render('homepage', { articles, admin, message, idUtente: req.session.idUtente })
+    res.render('homepage', { articles, admin, message, idUtente: req.session.idUtente})
 }
 
 
@@ -43,7 +43,8 @@ exports.dashboard = (req, res, next) => {
     const articles = req.articlesUtente
     const message = req.session.message
     delete req.session.message
-    res.render('dashboard', { admin, articles, message, idUtente: req.session.idUtente })
+    const nome = req.session.nome + ' ' + req.session.cognome
+    res.render('dashboard', { admin, articles, message, idUtente: req.session.idUtente, nome })
 }
 
 exports.putArticolo = (req, res, next) => {
