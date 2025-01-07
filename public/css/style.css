@@ -243,8 +243,15 @@ button.nascondi {
 
 /* HOME */
 
+.home-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .articoli-home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -254,7 +261,6 @@ button.nascondi {
   display: flex;
   flex-direction: column;
   max-height: 650px;
-  min-height: auto;
   max-width: 500px;
   min-width: 300px;
   width: 500px;
@@ -264,14 +270,6 @@ button.nascondi {
   margin: 10px;
   padding: 0px 10px 20px 10px;
   background-color: rgba(255, 255, 255, 0.05);
-}
-
-.articolo-home > div > p{
- height: 100px;
-}
-
-.oneline{
-    min-height: 58px;
 }
 
 .articolo-home > div > img {

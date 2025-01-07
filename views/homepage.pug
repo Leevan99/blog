@@ -9,47 +9,48 @@ block alert
         p= message
 
 block content 
-    if (!articles[0])
-        p 
-        | Non ci sono articoli pubblicati al momento.
-        | Pubblica tu per primo:&nbsp;
-        a(href="/admin/post") Pubblica 
-    else 
-        .articoli-home 
-            - var unpublish = 0
-            each article in articles
-                if (article.publish)
-                    .articolo-home
-                        - var slicing = 60
-                        while (article.titolo[slicing] != ' ' && slicing < article.titolo.length)
-                            - slicing--
-                        h2(class=((article.titolo.length) <= 38 ? "oneline" : ""))= article.titolo.slice(0,slicing)
-                            if(article.titolo.length > slicing)
-                                | ...
-                        div 
-                            img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
-                            - var slicing = 270
-                            if (article.titolo.length <= 30)
-                                - slicing = 300
-
-                            while (article.corpo[slicing] != ' ' && slicing < article.corpo.length)
+    .home-container
+        if (!articles[0])
+            p 
+            | Non ci sono articoli pubblicati al momento.
+            | Pubblica tu per primo:&nbsp;
+            a(href="/admin/post") Pubblica 
+        else 
+            .articoli-home 
+                - var unpublish = 0
+                each article in articles
+                    if (article.publish)
+                        .articolo-home
+                            - var slicing = 60
+                            while (article.titolo[slicing] != ' ' && slicing < article.titolo.length)
                                 - slicing--
-                            p=  article.corpo.slice(0,slicing)
-                                if(article.corpo.length > slicing)
+                            h2= article.titolo.slice(0,slicing)
+                                if(article.titolo.length > slicing)
                                     | ...
-                            a.view-article(href=`/articolo/${article.idArticoli}`) vai all'articolo
-                            .autore
-                                p Autore:&nbsp;
-                                    span= article.autore
-                            if(article.idAutore === idUtente)
-                                a.mod-article(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
-                else 
-                    - unpublish++
-                    if (articles.length == unpublish)
-                        p
-                        | Non ci sono articoli pubblicati al momento.
-                        | Pubblica tu per primo:&nbsp;
-                        a(href="/admin/post") Pubblica 
+                            div 
+                                img(src=`/img/${article.srcImg}` name="immagine" id="immagine" accept="image/*" required width="100%")
+                                - var slicing = 270
+                                if (article.titolo.length <= 30)
+                                    - slicing = 300
+
+                                while (article.corpo[slicing] != ' ' && slicing < article.corpo.length)
+                                    - slicing--
+                                p=  article.corpo.slice(0,slicing)
+                                    if(article.corpo.length > slicing)
+                                        | ...
+                                a.view-article(href=`/articolo/${article.idArticoli}`) vai all'articolo
+                                .autore
+                                    p Autore:&nbsp;
+                                        span= article.autore
+                                if(article.idAutore === idUtente)
+                                    a.mod-article(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
+                    else 
+                        - unpublish++
+                        if (articles.length == unpublish)
+                            p
+                            | Non ci sono articoli pubblicati al momento.
+                            | Pubblica tu per primo:&nbsp;
+                            a(href="/admin/post") Pubblica 
 
 
                             
