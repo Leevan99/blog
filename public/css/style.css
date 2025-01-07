@@ -19,6 +19,10 @@ body {
   background: transparent; /* Assicurati che il background del body sia trasparente */
 }
 
+a{
+  color: white;
+}
+
 /* MENU' */
 .page-title {
   color: white;
@@ -247,6 +251,14 @@ button.nascondi {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.home-container > .row{
+  flex-direction: row;
+}
+
+.home-container .row > a{
+  font-weight: 600;
 }
 
 .articoli-home {

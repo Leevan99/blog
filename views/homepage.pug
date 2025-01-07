@@ -46,11 +46,12 @@ block content
                                     a.mod-article(href=`/admin/articolo/${article.idArticoli}`) Modifica articolo
                     else 
                         - unpublish++
-                        if (articles.length == unpublish)
-                            p
-                            | Non ci sono articoli pubblicati al momento.
-                            | Pubblica tu per primo:&nbsp;
-                            a(href="/admin/post") Pubblica 
+                        .row 
+                            if (articles.length == unpublish)
+                                p
+                                | Non ci sono articoli pubblicati al momento.
+                                | Pubblica tu per primo:&nbsp;
+                                a(href="/admin/post") Pubblica 
 
 
                             
