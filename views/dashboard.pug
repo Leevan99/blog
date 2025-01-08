@@ -4,10 +4,6 @@ block page
     - var pageTitle = 'Dashboard'
     - var menu = 'dashboard'
 
-block alert 
-    if(message)
-        p= message
-
 block content 
         h2.dashboard Benvenuto #{nome}!
         if (articles && !articles[0])

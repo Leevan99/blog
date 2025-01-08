@@ -12,13 +12,14 @@ html(lang="it")
     body 
         block header 
             include includes/menu
-        if(message)
+        block alert
+            if(message)
                 if (message === "Post pubblicato correttamente!" || message === "Post modificato correttamente!" || message === "Registrazione avvenuta con successo!<br>Effettua il login.")
                     .alert.green
-                        block alert
+                        p!=message
                 else 
                     .alert
-                        block alert
+                        p!=message
         .content 
             block content 
         block footer 
