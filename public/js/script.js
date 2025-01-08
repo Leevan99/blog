@@ -12,14 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const ext = document.querySelector("#ext")
     const file = document.querySelector('#file')
     const labelfile = document.querySelector('#img')
     if (file) {
+        ext.style.display = "none"
         labelfile.addEventListener('click', (event) => {
             file.click()
         })
         file.addEventListener('change', (event) => {
-            labelfile.innerHTML = file.files[0].name
+            if (/\.(jpg|jpeg|png)$/i.test(file.files[0].name)) {
+                if(file.files[0].name.length > 23){
+                    filename = file.files[0].name.slice(0,17) + ".." + file.files[0].name.slice(-4)
+                }else{
+                    filename = file.files[0].name
+                }
+                ext.style.display = "none"
+            } else {
+                file.value = ""
+                ext.style.display = "block"
+                ext.textContent = "Seleziona un file valido (jpg, jpeg, png)"
+                filename = "Scegli immagine"
+            }
+            labelfile.innerHTML = filename
         })
     }
 
