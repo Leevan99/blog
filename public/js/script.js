@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 file.value = ""
                 ext.style.display = "block"
                 ext.textContent = "Seleziona un file valido (jpg, jpeg, png)"
-                filename = "Scegli immagine"
+                filename = "Scegli immagine*"
             }
             labelfile.innerHTML = filename
         })

@@ -7,8 +7,8 @@ block page
 block content 
         h2.dashboard Benvenuto #{nome}!
         if (articles && !articles[0])
-            .container
-                p Non hai pubblicato articoli al momento.
+            .container.row
+                p Non hai pubblicato articoli al momento. 
                     | Pubblicane uno:&nbsp;
                     a(href="/admin/post") Pubblica post 
         else if (articles && articles[0])

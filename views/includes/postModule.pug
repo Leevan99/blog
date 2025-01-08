@@ -1,10 +1,8 @@
-label(for="titolo") Titolo: 
-input(type="text" name="titolo" placeholder="Titolo" value=(article ? article.titolo : '') required maxlength="255")
+input.testo-centrato(type="text" name="titolo" placeholder="Titolo" value=(article ? article.titolo : '') required minlength="10" maxlength="255")
 
 if (article)
     img(src=`/img/${article.srcImg}`, alt="Immagine articolo")
-label(for="corpo") Testo articolo:
-textarea(name="corpo" rows="10" cols="40" placeholder="Scrivi qui..." style="resize: none" required)= article ? article.corpo : ''
+textarea.testo-centrato(name="corpo" rows="10" cols="40" placeholder="Scrivi qui il testo dell'articolo..." style="resize: none" required)= article ? article.corpo : ''
 if (!article) 
     label.custom-file-label(for="immagine" id="img") Scegli immagine
     input#file(type="file" name="immagine" accept="image/jpeg, image/png" required) 
